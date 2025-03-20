@@ -17,7 +17,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/programs', programRoutes);
 app.use('/api/courses', courseRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5525;
 mongoose.connect("mongodb+srv://9hacks:nkpacmfb8m@cluster0.tasptqf.mongodb.net/")
     .then(() => {
         console.log('MongoDB connected');
