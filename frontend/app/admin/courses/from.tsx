@@ -1,4 +1,3 @@
-// app/admin/courses/CourseForm.tsx
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
@@ -13,7 +12,7 @@ interface CourseData {
     courseCode: string;
     semester: string;
     program: string;
-    professor?: string;
+    professor?: string; // will store professor email
 }
 
 interface CourseFormProps {
@@ -37,7 +36,10 @@ export default function CourseForm({ mode, initialData, onSuccess }: CourseFormP
     const [courseCode, setCourseCode] = useState(initialData?.courseCode || '');
     const [semester, setSemester] = useState(initialData?.semester || '');
     const [program, setProgram] = useState(initialData?.program || '');
-    const [professor, setProfessor] = useState(initialData?.professor || (user?.role === 'professor' ? user.id : ''));
+    // For admin, professorInput stores the professor email entered; for professors, we use their own email.
+    const [professorInput, setProfessorInput] = useState(
+        initialData?.professor || (user?.role === 'professor' ? user.email : '')
+    );
     const [programOptions, setProgramOptions] = useState<Program[]>([]);
     const [loading, setLoading] = useState(false);
 
@@ -61,6 +63,9 @@ export default function CourseForm({ mode, initialData, onSuccess }: CourseFormP
         e.preventDefault();
         setLoading(true);
 
+        // For admin, simply use the email entered in professorInput without converting it.
+        const professorEmail = user?.role === 'admin' ? professorInput : user?.email;
+
         const courseData: CourseData = {
             title,
             description,
@@ -68,7 +73,7 @@ export default function CourseForm({ mode, initialData, onSuccess }: CourseFormP
             courseCode,
             semester,
             program,
-            professor: user?.role === 'professor' ? user.id : professor,
+            professor: professorEmail,
         };
 
         try {
@@ -166,11 +171,11 @@ export default function CourseForm({ mode, initialData, onSuccess }: CourseFormP
             </div>
             {user?.role === 'admin' && (
                 <div style={{ marginBottom: '1rem' }}>
-                    <label>Professor ID (Instructor):</label>
+                    <label>Professor Email (Instructor):</label>
                     <input
-                        type="text"
-                        value={professor}
-                        onChange={(e) => setProfessor(e.target.value)}
+                        type="email"
+                        value={professorInput}
+                        onChange={(e) => setProfessorInput(e.target.value)}
                         required
                         style={{ width: '100%' }}
                     />
@@ -179,7 +184,7 @@ export default function CourseForm({ mode, initialData, onSuccess }: CourseFormP
             {user?.role === 'professor' && (
                 <div style={{ marginBottom: '1rem' }}>
                     <label>Instructor:</label>
-                    <input type="text" value={user.name} disabled style={{ width: '100%' }} />
+                    <input type="text" value={user.email} disabled style={{ width: '100%' }} />
                 </div>
             )}
             <button type="submit" disabled={loading}>

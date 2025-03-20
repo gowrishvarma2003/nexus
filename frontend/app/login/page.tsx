@@ -1,9 +1,9 @@
-// app/login/page.tsx
 'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../contexts/AuthContext';
+import Link from 'next/link';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -19,9 +19,7 @@ export default function LoginPage() {
             body: JSON.stringify({ email, password }),
         });
         const data = await res.json();
-        console.log(data);
         if (data.token && data.user) {
-            console.log('Login successful');
             login(data.token, data.user);
             router.push('/');
         } else {
@@ -30,8 +28,8 @@ export default function LoginPage() {
     };
 
     return (
-        <div style={{ padding: '2rem' }}>
-            <h1>Login</h1>
+        <div className='flex' style={{ padding: '2rem' }}>
+            <h1 className=''>Login</h1>
             <form onSubmit={handleLogin}>
                 <input
                     type="email"
@@ -51,6 +49,12 @@ export default function LoginPage() {
                 />
                 <button type="submit">Login</button>
             </form>
+            <p style={{ marginTop: '1rem' }}>
+                Don't have an account?{' '}
+                <Link href="/signup" style={{ color: 'blue', textDecoration: 'underline' }}>
+                    Register here
+                </Link>.
+            </p>
         </div>
     );
 }

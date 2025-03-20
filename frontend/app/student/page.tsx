@@ -1,6 +1,10 @@
-// app/student/page.tsx
 'use client';
 
 export default function StudentHome() {
-    return <div>Select an option from the student menu.</div>;
+    return (
+        <div style={{ padding: '2rem' }}>
+            <h2>Student Dashboard</h2>
+            <p>Welcome to your dashboard. Use the menu to view university programs.</p>
+        </div>
+    );
 }

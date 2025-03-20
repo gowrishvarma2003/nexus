@@ -17,7 +17,6 @@ router.post('/register', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
-
 router.post('/login', async (req, res) => {
     console.log('login');
     try {
@@ -30,12 +29,18 @@ router.post('/login', async (req, res) => {
         console.log(valid);
         if (!valid) return res.status(400).json({ message: 'Invalid password' });
 
-        const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: '1h' });
+        // Include email in the token payload
+        const token = jwt.sign(
+            { id: user._id, email: user.email, role: user.role },
+            JWT_SECRET,
+            { expiresIn: '1h' }
+        );
         console.log(token);
-        res.json({ token ,user });
+        res.json({ token, user });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
+
 
 module.exports = router;

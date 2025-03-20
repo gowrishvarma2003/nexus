@@ -11,10 +11,12 @@ export default function HomePage() {
   useEffect(() => {
     if (!user) {
       router.push('/login');
-    } else {
-      if (user.role === 'admin') router.push('/admin');
-      else if (user.role === 'professor') router.push('/professor');
-      else if (user.role === 'student') router.push('/student');
+    } else if (user.role === 'admin') {
+      router.push('/admin');
+    } else if (user.role === 'professor') {
+      router.push('/professor');
+    } else if (user.role === 'student') {
+      router.push('/student');
     }
   }, [user, router]);
 

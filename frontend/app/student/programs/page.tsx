@@ -1,4 +1,3 @@
-// app/student/programs/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -14,12 +13,13 @@ export default function StudentPrograms() {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => res.json())
-                .then((data) => setPrograms(data));
+                .then((data) => setPrograms(data))
+                .catch((error) => console.error('Error fetching programs:', error));
         }
     }, [token]);
 
     return (
-        <div>
+        <div style={{ padding: '2rem' }}>
             <h2>University Programs</h2>
             {programs.map((program) => (
                 <div key={program._id} style={{ marginBottom: '1rem' }}>

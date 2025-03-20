@@ -1,14 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../../../contexts/AuthContext';
-import CourseForm from '../from'; // Adjust path if needed
+import CourseForm from '../from';
 
 export default function AddCoursePage() {
-    const { user } = useAuth();
     const router = useRouter();
 
-    // onSuccess callback navigates back to the courses list
     const handleSuccess = () => {
         router.push('/admin/courses');
     };

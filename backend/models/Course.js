@@ -23,10 +23,9 @@ const courseSchema = new Schema({
         ref: 'Program',
         required: true
     },
-    // The professor acting as the instructor
+    // Now store the professor's email (instead of ObjectId)
     professor: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: String
     }
 }, { timestamps: true });
 

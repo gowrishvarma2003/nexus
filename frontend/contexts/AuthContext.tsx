@@ -20,7 +20,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
     token: null,
     user: null,
-    login: () => {console.log('i am here') },
+    login: () => { },
     logout: () => { },
 });
 
@@ -30,15 +30,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [token, setToken] = useState<string | null>(null);
     const [user, setUser] = useState<User | null>(null);
 
-    // On mount, read the token and user info from cookies.
+    // On mount, load token and user from cookies (if available)
     useEffect(() => {
         const storedToken = Cookies.get('token') || null;
         const storedUser = Cookies.get('user');
         if (storedToken && storedUser) {
             setToken(storedToken);
             try {
-                const parsedUser: User = JSON.parse(storedUser);
-                setUser(parsedUser);
+                setUser(JSON.parse(storedUser));
             } catch (error) {
                 console.error('Error parsing stored user cookie', error);
             }
@@ -46,7 +45,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     const login = (newToken: string, newUser: User) => {
-        console.log('Logging in', newUser);
         Cookies.set('token', newToken, { expires: 7 });
         Cookies.set('user', JSON.stringify(newUser), { expires: 7 });
         setToken(newToken);
