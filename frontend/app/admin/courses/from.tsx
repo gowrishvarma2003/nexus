@@ -45,7 +45,7 @@ export default function CourseForm({ mode, initialData, onSuccess }: CourseFormP
 
     useEffect(() => {
         if (token) {
-            fetch('https://nexus-59gq-j1athuizy-projects121.vercel.app/api/programs', {
+            fetch('https://nexus-jh17.vercel.app/api/programs', {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => res.json())
@@ -79,8 +79,8 @@ export default function CourseForm({ mode, initialData, onSuccess }: CourseFormP
         try {
             const res = await fetch(
                 mode === 'add'
-                    ? 'https://nexus-59gq-j1athuizy-projects121.vercel.app/api/courses'
-                    : `https://nexus-59gq-j1athuizy-projects121.vercel.app/api/courses/${initialData?._id}`,
+                    ? 'https://nexus-jh17.vercel.app/api/courses'
+                    : `https://nexus-jh17.vercel.app/api/courses/${initialData?._id}`,
                 {
                     method: mode === 'add' ? 'POST' : 'PUT',
                     headers: {

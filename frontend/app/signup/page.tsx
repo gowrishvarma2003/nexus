@@ -13,7 +13,7 @@ export default function SignupPage() {
 
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
-        const res = await fetch('https://nexus-59gq-j1athuizy-projects121.vercel.app/api/auth/register', {
+        const res = await fetch('https://nexus-jh17.vercel.app/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password, role }),

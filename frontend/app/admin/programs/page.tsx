@@ -12,7 +12,7 @@ export default function AdminPrograms() {
     const fetchPrograms = () => {
         if (token) {
             setLoading(true);
-            fetch('https://nexus-59gq-j1athuizy-projects121.vercel.app/api/programs', {
+            fetch('https://nexus-jh17.vercel.app/api/programs', {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => res.json())
@@ -29,7 +29,7 @@ export default function AdminPrograms() {
     const handleDelete = async (id: string) => {
         if (confirm('Are you sure you want to delete this program?')) {
             try {
-                const res = await fetch(`https://nexus-59gq-j1athuizy-projects121.vercel.app/api/programs/${id}`, {
+                const res = await fetch(`https://nexus-jh17.vercel.app/api/programs/${id}`, {
                     method: 'DELETE',
                     headers: { Authorization: `Bearer ${token}` },
                 });

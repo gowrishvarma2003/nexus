@@ -9,7 +9,7 @@ export default function StudentPrograms() {
 
     useEffect(() => {
         if (token) {
-            fetch('https://nexus-59gq-j1athuizy-projects121.vercel.app/api/programs', {
+            fetch('https://nexus-jh17.vercel.app/api/programs', {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => res.json())
