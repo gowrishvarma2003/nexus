@@ -12,7 +12,7 @@ export default function AdminCourses() {
     const fetchCourses = () => {
         if (token) {
             setLoading(true);
-            fetch('http://localhost:5000/api/courses', {
+            fetch('https://nexus-59gq-j1athuizy-projects121.vercel.app/api/courses', {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => res.json())
@@ -29,7 +29,7 @@ export default function AdminCourses() {
     const handleDelete = async (id: string) => {
         if (confirm('Are you sure you want to delete this course?')) {
             try {
-                const res = await fetch(`http://localhost:5000/api/courses/${id}`, {
+                const res = await fetch(`https://nexus-59gq-j1athuizy-projects121.vercel.app/api/courses/${id}`, {
                     method: 'DELETE',
                     headers: { Authorization: `Bearer ${token}` },
                 });

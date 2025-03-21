@@ -11,7 +11,7 @@ export default function AdminUsers() {
     const fetchUsers = () => {
         if (token) {
             setLoading(true);
-            fetch('http://localhost:5000/api/users', {
+            fetch('https://nexus-59gq-j1athuizy-projects121.vercel.app/api/users', {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => res.json())
@@ -28,7 +28,7 @@ export default function AdminUsers() {
     const handleDelete = async (id: string) => {
         if (confirm('Are you sure you want to delete this user?')) {
             try {
-                const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+                const res = await fetch(`https://nexus-59gq-j1athuizy-projects121.vercel.app/api/users/${id}`, {
                     method: 'DELETE',
                     headers: { Authorization: `Bearer ${token}` },
                 });

@@ -11,7 +11,7 @@ export default function ProfessorCourses() {
     useEffect(() => {
         if (token && user) {
             setLoading(true);
-            fetch(`http://localhost:5000/api/courses?professorEmail=${encodeURIComponent(user.email)}`, {
+            fetch(`https://nexus-59gq-j1athuizy-projects121.vercel.app/api/courses?professorEmail=${encodeURIComponent(user.email)}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => res.json())

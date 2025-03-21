@@ -33,8 +33,8 @@ export default function ProgramForm({ mode, initialData, onSuccess }: ProgramFor
         try {
             const res = await fetch(
                 mode === 'add'
-                    ? 'http://localhost:5000/api/programs'
-                    : `http://localhost:5000/api/programs/${initialData?._id}`,
+                    ? 'https://nexus-59gq-j1athuizy-projects121.vercel.app/api/programs'
+                    : `https://nexus-59gq-j1athuizy-projects121.vercel.app/api/programs/${initialData?._id}`,
                 {
                     method: mode === 'add' ? 'POST' : 'PUT',
                     headers: {
