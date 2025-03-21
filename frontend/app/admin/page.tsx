@@ -1,6 +1,9 @@
-// app/admin/page.tsx
 'use client';
 
 export default function AdminHome() {
-  return <div>Select an option from the admin menu.</div>;
+  return (
+    <div>
+      <p>Select an option from the admin menu.</p>
+    </div>
+  );
 }

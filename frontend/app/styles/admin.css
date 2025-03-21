@@ -1,0 +1,105 @@
+/* admin.css */
+
+/* A container for each admin page. */
+.admin-container {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+}
+
+/* Basic header styling. */
+.admin-header {
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.admin-header p {
+    color: #555;
+}
+
+/* Navigation list within the header. */
+.admin-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.admin-nav li {
+    margin: 0;
+}
+
+.admin-nav a {
+    color: #1a73e8;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Buttons (logout, add, delete) */
+.admin-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #1a73e8;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.admin-button:hover {
+    background-color: #1664c4;
+    /* Slightly darker on hover */
+}
+
+/* A simple list style for items (users, programs, courses) */
+.admin-list {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-list li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Form container */
+.admin-form {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.admin-form h2 {
+    margin-bottom: 1rem;
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-form button {
+    margin-top: 0.5rem;
+}
+
+.back-button {
+    margin-top: 1rem;
+}

@@ -1,0 +1,54 @@
+/* AdminCourses.module.css */
+
+/* Container for the Admin Courses page */
+.adminCoursesContainer {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+}
+
+/* Style for the "Add New Course" button */
+.addCourseButton {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #1a73e8;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.addCourseButton:hover {
+    background-color: #1664c4;
+}
+
+/* Style for the Delete button */
+.deleteButton {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #e14b4b;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+    background-color: #c43d3d;
+}
+
+/* Just a simple list style for courses */
+.courseList {
+    list-style: none;
+    padding: 0;
+}
+
+.courseItem {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}

@@ -47,16 +47,16 @@ export default function AdminUsers() {
     };
 
     return (
-        <div style={{ padding: '2rem' }}>
+        <div>
             <h2>Manage Users</h2>
             {loading ? (
                 <p>Loading users...</p>
             ) : (
-                <ul>
+                <ul className="admin-list">
                     {users.map((user) => (
                         <li key={user._id}>
                             {user.name} – {user.email} – {user.role}
-                            <button onClick={() => handleDelete(user._id)} style={{ marginLeft: '1rem' }}>
+                            <button className="admin-button" onClick={() => handleDelete(user._id)}>
                                 Delete
                             </button>
                         </li>

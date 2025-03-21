@@ -61,28 +61,17 @@ export default function ProgramForm({ mode, initialData, onSuccess }: ProgramFor
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '2rem auto' }}>
+        <form className="admin-form" onSubmit={handleSubmit}>
             <h2>{mode === 'add' ? 'Add New Program' : 'Edit Program'}</h2>
-            <div style={{ marginBottom: '1rem' }}>
+            <div>
                 <label>Program Name:</label>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    style={{ width: '100%' }}
-                />
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
             </div>
-            <div style={{ marginBottom: '1rem' }}>
+            <div>
                 <label>Description:</label>
-                <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                    style={{ width: '100%' }}
-                />
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
             </div>
-            <button type="submit" disabled={loading}>
+            <button className="admin-button" type="submit" disabled={loading}>
                 {loading ? 'Submitting...' : mode === 'add' ? 'Add Program' : 'Update Program'}
             </button>
         </form>

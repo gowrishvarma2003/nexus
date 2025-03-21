@@ -48,19 +48,21 @@ export default function AdminPrograms() {
     };
 
     return (
-        <div style={{ padding: '2rem' }}>
+        <div>
             <h2>Manage Programs</h2>
             <Link href="/admin/programs/add">
-                <button style={{ marginBottom: '1rem' }}>Add New Program</button>
+                <button className="admin-button" style={{ marginBottom: '1rem' }}>
+                    Add New Program
+                </button>
             </Link>
             {loading ? (
                 <p>Loading programs...</p>
             ) : (
-                <ul>
-                    {programs.map((program) => (
-                        <li key={program._id}>
-                            {program.name} – {program.description}
-                            <button onClick={() => handleDelete(program._id)} style={{ marginLeft: '1rem' }}>
+                <ul className="admin-list">
+                    {programs.map((prog) => (
+                        <li key={prog._id}>
+                            {prog.name} – {prog.description}
+                            <button className="admin-button" onClick={() => handleDelete(prog._id)}>
                                 Delete
                             </button>
                         </li>

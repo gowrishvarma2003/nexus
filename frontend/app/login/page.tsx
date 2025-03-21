@@ -1,60 +1,73 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '../../contexts/AuthContext';
-import Link from 'next/link';
+import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../../contexts/AuthContext";  // adjust path as needed
+import Link from "next/link";
+import styles from "./LoginPage.module.css";
 
 export default function LoginPage() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const { login } = useAuth();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const { login } = useAuth();  // Auth context hook
     const router = useRouter();
 
-    const handleLogin = async (e: React.FormEvent) => {
+    const handleLogin = async (e: FormEvent) => {
         e.preventDefault();
-        const res = await fetch('https://nexus-jh17.vercel.app/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+
+        const res = await fetch("https://nexus-jh17.vercel.app/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
         });
+
         const data = await res.json();
+
         if (data.token && data.user) {
+            // Store auth info via context, localStorage, etc.
             login(data.token, data.user);
-            router.push('/');
+            router.push("/");
         } else {
-            alert(data.message || 'Login failed');
+            alert(data.message || "Login failed");
         }
     };
 
     return (
-        <div className='flex' style={{ padding: '2rem' }}>
-            <h1 className=''>Login</h1>
-            <form onSubmit={handleLogin}>
+        <div className={styles.container}>
+            <form className={styles.loginForm} onSubmit={handleLogin}>
+                <h1 className={styles.loginTitle}>Login</h1>
+
                 <input
+                    className={styles.loginInput}
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    style={{ display: 'block', marginBottom: '1rem' }}
                 />
+
                 <input
+                    className={styles.loginInput}
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    style={{ display: 'block', marginBottom: '1rem' }}
                 />
-                <button type="submit">Login</button>
+
+                <button className={styles.loginButton} type="submit">
+                    Login
+                </button>
+
+                <p className={styles.loginFooter}>
+                    Don&apos;t have an account?{" "}
+                    <Link href="/signup" className={styles.loginLink}>
+                        Register here
+                    </Link>
+                    .
+                </p>
             </form>
-            <p style={{ marginTop: '1rem' }}>
-                Don't have an account?{' '}
-                <Link href="/signup" style={{ color: 'blue', textDecoration: 'underline' }}>
-                    Register here
-                </Link>.
-            </p>
         </div>
     );
 }

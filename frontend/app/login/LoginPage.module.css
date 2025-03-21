@@ -1,0 +1,87 @@
+/* LoginPage.module.css */
+
+.container {
+    /* Center everything vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    padding: 2rem;
+    /* Subtle gradient background, adjust to your preference */
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    font-family: Arial, sans-serif;
+}
+
+.loginForm {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.loginTitle {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.loginInput {
+    width: 90%;
+    font-size: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    /* Smooth transition on hover/focus */
+    transition: border-color 0.3s;
+}
+
+.loginInput:hover,
+.loginInput:focus {
+    border-color: #4a90e2;
+    /* Highlight border on hover/focus */
+    outline: none;
+    /* Remove default outline */
+}
+
+.loginButton {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+
+    background-color: #4a90e2;
+    /* Primary color */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+
+    /* Smooth transition on hover */
+    transition: background-color 0.3s;
+}
+
+.loginButton:hover {
+    background-color: #357abd;
+    /* Darker shade on hover */
+}
+
+.loginFooter {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.loginLink {
+    color: #4a90e2;
+    text-decoration: underline;
+    cursor: pointer;
+}

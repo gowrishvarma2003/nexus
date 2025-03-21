@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useAuth } from '../../../contexts/AuthContext';
 import Link from 'next/link';
+import { useAuth } from '../../../contexts/AuthContext';
+import styles from './AdminCourses.module.css'; // <-- Import the CSS module
 
 export default function AdminCourses() {
     const { token } = useAuth();
@@ -48,19 +49,23 @@ export default function AdminCourses() {
     };
 
     return (
-        <div style={{ padding: '2rem' }}>
+        <div className={styles.adminCoursesContainer}>
             <h2>Manage Courses</h2>
             <Link href="/admin/courses/add">
-                <button style={{ marginBottom: '1rem' }}>Add New Course</button>
+                <button className={styles.addCourseButton}>Add New Course</button>
             </Link>
+
             {loading ? (
                 <p>Loading courses...</p>
             ) : (
-                <ul>
+                <ul className={styles.courseList}>
                     {courses.map((course) => (
-                        <li key={course._id}>
+                        <li key={course._id} className={styles.courseItem}>
                             {course.title} ({course.courseCode}) – {course.credits} credits
-                            <button onClick={() => handleDelete(course._id)} style={{ marginLeft: '1rem' }}>
+                            <button
+                                className={styles.deleteButton}
+                                onClick={() => handleDelete(course._id)}
+                            >
                                 Delete
                             </button>
                         </li>
